@@ -6,12 +6,21 @@ package rurki;
 public class MainClass {
 
     public static void main(String[] args) {
-        Matrix A = new Matrix(1, 1);
+        Matrix A = new Matrix(2, 2);
+        A.putVal(0, 0, 1);
+        A.putVal(0, 1, 2);
+        A.putVal(1, 0, 3);
+        A.putVal(1, 1, 4);
 
-        A.putVal(0, 0, 2);
+        Matrix B = new Matrix(1, 2);
+        B.putVal(0, 0, 5);
+        B.putVal(1, 0, 6);
 
+        Matrix C = A.inverse().product(B);
+        
         System.out.println(A);
-        System.out.println(A.inverse());
+        System.out.println(B);
+        System.out.println(C);
 
         
     }
