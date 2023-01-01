@@ -7,20 +7,20 @@ package rurki;
 public class Matrix {
     public int width;
     public int height;
-    private float tab[][];
+    private double tab[][];
 
     public Matrix(int width, int height){
         this.width = width;
         this.height = height;
-        this.tab = new float[height][width];
+        this.tab = new double[height][width];
     }
 
 
-    public void putVal(int i, int j, float val){
+    public void putVal(int i, int j, double val){
         tab[i][j] = val;
     }
 
-    public float getVal(int i, int j){
+    public double getVal(int i, int j){
         return tab[i][j];
     }
 
@@ -34,7 +34,7 @@ public class Matrix {
         return toReturn;
     }
 
-    public Matrix scalarMultiplication(float a){
+    public Matrix scalarMultiplication(double a){
         Matrix toReturn = new Matrix(width, height);
         for(int i=0;i<height;i++){
             for(int j=0;j<width;j++){
@@ -68,8 +68,8 @@ public class Matrix {
 
     }
 
-    public float det(){
-        float w = 0;
+    public double det(){
+        double w = 0;
         //jesli to jest zwykla macierz 2x2 lub 1x1 to zwracam wyliczona wartosc
         if(this.height == 1){
             return this.getVal(0, 0);
@@ -96,16 +96,16 @@ public class Matrix {
     }
 
     public Matrix inverse(){
-        float w = this.det();
+        double w = this.det();
         if(w != 0){
             return this.complementMatrix().transposed().scalarMultiplication(1/w);
         }
         return null;
     }
 
-    private float complement(int i, int j){
+    private double complement(int i, int j){
         if(this.height > 1){
-            return (float)(Math.pow(-1, (i+j))*this.withoutIJ(i, j).det());
+            return Math.pow(-1, (i+j))*this.withoutIJ(i, j).det();
         }
         return 1;
     }
