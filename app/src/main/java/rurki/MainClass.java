@@ -4,11 +4,15 @@
 package rurki;
 
 public class MainClass {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new MainClass().getGreeting());
+        Matrix A = new Matrix(1, 1);
+
+        A.putVal(0, 0, 2);
+
+        System.out.println(A);
+        System.out.println(A.inverse());
+
+        
     }
 }
