@@ -13,18 +13,30 @@ public class Integral {
         this.xk = xk;
         this.f = f;
 
-        this.xp = Math.max(xp, f.getXP());
-        this.xk = Math.min(xk, f.getXK());
-
         this.value = getValue();
     }
 
-    private double getValue(){
-        double val = 0;
-        double c = 1;
-        double x = 0.577350269;
+    // private double getValue(){
+    //     double val = 0;
+    //     double c = 1;
+    //     double x = 0.577350269;
 
-        val = (xk-xp)/2 * c * (f.getValue((xk-xp)/2 * (-x) + (xk+xp)/2) + f.getValue((xk-xp)/2 * (x) + (xk+xp)/2));
+    //     val = (xk-xp)/2 * c * (f.getValue((xk-xp)/2 * (-x) + (xk+xp)/2) + f.getValue((xk-xp)/2 * (x) + (xk+xp)/2));
+
+    //     return val;
+    // }
+
+
+    private double getValue(){
+
+        int N = 10000;
+        double dx = (xk-xp)/N;
+        double val = 0;
+
+        for(int i=0;i<N;i++){
+            double x = i*dx;
+            val += (f.getValue(x)+f.getValue(x+dx))*dx/2;
+        }
 
         return val;
     }
