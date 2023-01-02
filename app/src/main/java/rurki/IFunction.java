@@ -18,8 +18,9 @@ public interface IFunction {
 
     public IFunction differential();
 
-
     public IFunction multiplyFunction(IFunction g);
+
+    public IFunction multiplyByNumber(double a);
 
     public String toString();
 }

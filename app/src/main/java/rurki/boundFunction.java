@@ -48,6 +48,13 @@ public class boundFunction implements IFunction{
         return toReturn;
     }
 
+    @Override
+    public IFunction multiplyByNumber(double a) {
+        boundFunction toReturn = new boundFunction(xp, xk);
+        toReturn.setFunction(this.f.multiplyByNumber(a));
+        return toReturn;
+    }
+
     
 
     public String toString(){
@@ -82,6 +89,9 @@ public class boundFunction implements IFunction{
     public double getXK() {
         return xk;
     }
+
+    
+
 
     
 

@@ -42,6 +42,15 @@ public class Polynomial implements IFunction{
         return fg;
     }
 
+    @Override
+    public IFunction multiplyByNumber(double a) {
+        Polynomial f = new Polynomial(degree);
+        for(int i=0;i<degree+1;i++){
+            f.setFactor(i, a*this.poly[i]);
+        }
+        return f;
+    }
+
     public IFunction differential(){
         Polynomial g = new Polynomial(degree-1);
         for(int i=1;i<degree+1;i++){
@@ -94,6 +103,9 @@ public class Polynomial implements IFunction{
     public double getXK() {
         return 0;
     }
+
+    
+
 
 
 
