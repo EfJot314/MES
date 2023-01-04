@@ -5,8 +5,9 @@ using CairoMakie
 
 #calkowanie numeryczne - metoda trapezow
 function integrate(f, a, b)
-    value = 0.0
+    #liczba elementow na ktore dzielona jest calka
     N = 10000
+    value = 0.0
     h = (b-a)/N
     for i in 0:N-1
         x = a+i*h
@@ -45,6 +46,7 @@ end
 
 #pochodna 
 function derivative(f)
+    #stala przyblizajaca 0
     h = 1/100000
     return x->(f(x+h)-f(x))/h
 end
