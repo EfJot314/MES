@@ -78,13 +78,13 @@ end
 function Bfun(f1,f2)
     poch1 = derivative(f1)
     poch2 = derivative(f2)
-    return f1(0)*f2(0) - integrate(multipliedFunction(poch1, poch2), 0, 3)
+    return integrate(multipliedFunction(poch1, poch2), 0, 3) - f1(0)*f2(0)
 end
 
 
 function Lfun(f)
     f1 = multipliedFunction(dividedFunction(rho,eps), f)
-    return 5*f(0)-integrate(f1, 0, 3)
+    return integrate(f1, 0, 3) - 5*f(0)
 end
 
 
@@ -158,7 +158,7 @@ end
 x = range(0, 3, 10000)
 y = fi.(x)
 fig = Figure(resolution = (900, 900))
-ax1 = Axis(fig[1, 1], title=L"\frac{d^2\Phi}{dt^2} = -\frac{\rho}{ε_r}",
+ax1 = Axis(fig[1, 1], title=L"\frac{d^2\Phi}{dx^2} = -\frac{\rho}{ε_r}",
         xlabel=L"x [m]", ylabel=L"\Phi [Vm]")
 lines!(ax1, x, y, label = L"\Phi (x)")
 axislegend(ax1)

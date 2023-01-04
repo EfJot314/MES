@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage{polski}
+\begin{document}
+	Filip Jędrzejewski
+	
+	\section{Metoda Elementów Skończonych}
+	
+	\subsection{Problem obliczeniowy}
+	
+	\begin{equation}
+		\frac{d^2\phi}{dx^2} = -\frac{\rho}{\varepsilon_r}
+	\end{equation}
+	
+	przy czym:
+	\begin{equation}
+		\rho = 1
+	\end{equation}
+	
+	\begin{equation}
+		\varepsilon_r(x) =\left\{ \begin{array}{rl}
+					10 & \textrm{dla $x \in [0,1]$} \\ 
+					5 & \textrm{dla $x \in (1,2]$} \\
+					1 & \textrm{dla $x \in (2,3]$}
+					\end{array} \right.
+	\end{equation}
+	
+	\subsection{Warunki brzegowe}
+	Warunek brzegowy Cauchy'ego:
+	\begin{equation}
+		\phi '(0)+\phi (0) = 5
+	\end{equation}
+	 Warunek brzegowy Dirichleta:
+	 \begin{equation}
+	 	\phi (3) = 2
+	 \end{equation}
+	 
+	 
+	\section{Sformułowanie wariacyjne}
+	Mnożymy równanie (1) przez funkcję testową $v$ spełniającą warunek: $v(3) = 0$:
+	\begin{equation}
+		\phi '' v = -\frac{\rho}{\varepsilon_r}v
+	\end{equation}
+	Całkujemy obustronnie:
+	\begin{equation}
+		\int_0^3 \phi '' v dx = -\int_0^3 \frac{\rho}{\varepsilon_r} v dx
+	\end{equation}
+	Całkując lewą stronę równania przez części otrzymujemy:
+	\begin{equation}
+		\phi ' (3) \cdot v(3) - \phi ' (0) \cdot v(0) - \int_0^3 \phi ' v ' dx = -\int_0^3 \frac{\rho}{\varepsilon_r} v dx
+	\end{equation}
+	Z własności funkcji $v(x)$ wiemy, że $v(3)=0$, zatem:
+	\begin{equation}
+		\phi' (0) \cdot v(0) + \int_0^3 \phi ' v ' dx = \int_0^3 \frac{\rho}{\varepsilon_r} v dx
+	\end{equation}
+	Z (4) mamy:
+	\begin{equation}
+		\phi ' (0) = 5 - \phi (0)
+	\end{equation}
+	Łącząc (9) i (10) otrzymujemy:
+	\begin{equation}
+		5 \cdot v(0) - \phi (0) \cdot v(0) + \int_0^3 \phi ' v' dx = \int_0^3 \frac{\rho}{\varepsilon_r} v dx
+	\end{equation}
+	\begin{equation}
+		\int_0^3 \phi ' v' dx - \phi (0) \cdot v(0) = \int_0^3 \frac{\rho}{\varepsilon_r} v dx - 5 \cdot v(0)
+	\end{equation}
+	Równanie (12) można zapisać w następujący sposób:
+	\begin{equation}
+		B(\phi, v) = L(v)
+	\end{equation}
+	przy czym:
+	\begin{equation}
+		B(\phi, v) = \int_0^3 \phi ' v' dx - \phi (0) \cdot v(0)
+	\end{equation}
+	\begin{equation}
+		L(v) = \int_0^3 \frac{\rho}{\varepsilon_r} v dx - 5 \cdot v(0)
+	\end{equation}
+	Zapiszmy:
+	\begin{equation}
+		\phi = w + \Phi
+	\end{equation}
+	Funkcja $w(x)$ spełnia warunek $w(3)=0$, zatem $\Phi(3) = 2$. Przyjmijmy zatem, że:
+	\begin{equation}
+		\Phi (x) = 2
+	\end{equation}
+	Łącząc zależności (13) i (17) otrzymujemy:
+	\begin{equation}
+		B(w+\Phi, v) = L(v)
+	\end{equation}
+	Korzystając z liniowości $B$ względem pierwszego argumentu, dostajemy:
+	\begin{equation}
+		B(w,v) + B(\Phi, v) = L(v)
+	\end{equation}
+	Zatem ostatecznie:
+	\begin{equation}
+		B(w,v) = L(v)-B(\Phi, v)
+	\end{equation}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
