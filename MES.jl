@@ -1,5 +1,6 @@
 using LinearAlgebra
-using Plots
+using LaTeXStrings
+using CairoMakie
 
 
 #calkowanie numeryczne - metoda trapezow
@@ -85,10 +86,18 @@ function Lfun(f)
 end
 
 
+
+#wlasciwa czesc programu
+
+#wczytywanie liczby elementow
+println("Podaj N: ")
+N = readline()
+N = parse(Int64, N)
+
+#przedzial
 xp = 0
 xk = 3
 
-N = 50
 h = (xk-xp)/N
 
 
@@ -127,6 +136,7 @@ for i in 1:N
     B[i] = Lfun(funTab[i]) - Bfun(shift, funTab[i])
 end
 
+
 #C to macierz zawierajaca wspolczynniki ui
 C = zeros(N,1)
 if(det(A) != 0)
@@ -144,6 +154,19 @@ end
 
 #tworze wykres funkcji fi
 x = range(0, 3, 10000)
-pl=plot(x, fi.(x))
+y = fi.(x)
+fig = Figure(resolution = (900, 900))
+ax1 = Axis(fig[1, 1], title=L"\frac{d^2\Phi}{dt^2} = -\frac{\rho}{ε_r}",
+        xlabel=L"x [m]", ylabel=L"\Phi [Vm]")
+lines!(ax1, x, y, label = L"\Phi (x)")
+axislegend(ax1)
 
+#wykres funkcji ksztaltu
+ax2 = Axis(fig[2, 1], title="Funkcje ksztaltu (N = "*string(N)*")",
+        xlabel=L"x [m]", ylabel=L"\Phi [Vm]")
+for fun in funTab
+    lines!(ax2, x, fun.(x))
+end
 
+#pokazuje wykres
+fig
