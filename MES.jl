@@ -158,14 +158,14 @@ end
 x = range(0, 3, 10000)
 y = fi.(x)
 fig = Figure(resolution = (900, 900))
-ax1 = Axis(fig[1, 1], title=L"\frac{d^2\Phi}{dx^2} = -\frac{\rho}{ε_r}",
-        xlabel=L"x [m]", ylabel=L"\Phi [Vm]")
-lines!(ax1, x, y, label = L"\Phi (x)")
+ax1 = Axis(fig[1, 1], title=L"\frac{d^2\phi}{dx^2} = -\frac{\rho}{ε_r}",
+        xlabel=L"x [m]", ylabel=L"\phi [Vm]")
+lines!(ax1, x, y, label = L"\phi (x)")
 axislegend(ax1)
 
 #wykres funkcji ksztaltu
 ax2 = Axis(fig[2, 1], title="Funkcje ksztaltu (N = "*string(N)*")",
-        xlabel=L"x [m]", ylabel=L"\Phi [Vm]")
+        xlabel=L"x [m]", ylabel=L"\phi [Vm]")
 for fun in funTab
     lines!(ax2, x, fun.(x))
 end
