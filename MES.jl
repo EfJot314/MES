@@ -84,7 +84,7 @@ end
 
 function Lfun(f)
     f1 = multipliedFunction(dividedFunction(rho,eps), f)
-    return integrate(f1, 0, 3) - 5*f(0)
+    return integrate(f1, 0, 3) - 6*f(0)
 end
 
 
